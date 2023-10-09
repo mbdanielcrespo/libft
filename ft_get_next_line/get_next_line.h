@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "../ft_libft/libft.h"
 
 char	*ft_strjoin_gnl(char *s1, char *s2);
 size_t	ft_strlen_gnl(char *str);
