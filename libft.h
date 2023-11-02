@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:53:02 by danalmei          #+#    #+#             */
-/*   Updated: 2023/10/23 19:16:46 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:51:02 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef signed long long int	t_i64;
 
 typedef size_t					t_size;
 
+/*
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }		t_list;
+*/
 
 void	ft_bzero(void *str, t_size n);
 void	*ft_calloc(t_size count, t_size size);
@@ -73,7 +75,7 @@ void	ft_putstr_fd(char *s, t_i32 fd);
 //void	ft_lstiter(t_list *lst, void (*f)(void *));
 //t_list	*ft_lstlast(t_list *lst);
 //t_list	*ft_lstmap(t_list *lst, void*(*f)(void *), void (*del)(void *));
-//t_list	*ft_lstnew(void *content);
+//t_list	*ft_lstnew(int *content);
 //t_i32	ft_lstsize(t_list *lst);
 
 int		ft_printf(const char *str, ...);
@@ -84,5 +86,7 @@ int		ft_putnbr_fdp(t_i32 n, t_i32 fd);
 int		ft_putstr_fdp(char *s, t_i32 fd);
 
 int		ft_pow(int num, int pow);
+void	ft_swap(int *x, int *y);
+void	ft_error(char *msg);
 
 #endif

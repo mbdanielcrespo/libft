@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:45 by danalmei          #+#    #+#             */
-/*   Updated: 2023/10/20 17:47:49 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:03:12 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include "libft.h"
 
 char	*ft_strjoin_gnl(char *s1, char *s2);

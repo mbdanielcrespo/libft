@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 20:08:49 by danalmei          #+#    #+#             */
-/*   Updated: 2023/10/20 17:47:33 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:03:20 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define HEX_L "0123456789abcdef"
 # define HEX_U "0123456789ABCDEF"
-# include <stdio.h> //#Remove
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft.h"

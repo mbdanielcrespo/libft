@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:13:48 by danalmei          #+#    #+#             */
-/*   Updated: 2023/10/24 14:47:19 by danalmei         ###   ########.fr       */
+/*   Created: 2023/10/24 14:34:06 by danalmei          #+#    #+#             */
+/*   Updated: 2023/10/24 18:58:04 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(int *content)
+void	ft_error(char *msg)
 {
-	t_list	*ls;
-
-	ls = (t_list *)malloc(sizeof(t_list));
-	if (!ls)
-		return (NULL);
-	ls->content = content;
-	ls->next = NULL;
-	return (ls);
+	ft_printf("%s", msg);
+	exit(0);
 }
