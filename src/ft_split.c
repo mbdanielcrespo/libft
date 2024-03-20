@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:23:59 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 13:01:54 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:22:48 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,16 @@ char	**ft_split(char const *s, char ch)
 	*strs = NULL;
 	return (strz);
 }
-/*
-int	main()
+
+void	ft_fsplit(char **strs)
 {
-	t_i32	c;
-	char	**strs;
-	
+	int	c;
+
 	c = 0;
-
-	strs = ft_split("nonempty", '\0');
-	printf("Input str -> nonempty\n");
-	while (strs[c] != NULL)
+	if (strs)
 	{
-		printf("Split str -> %s\n", strs[c]);
-		c++;
+		while (strs[c])
+			free(strs[c++]);
+		free(strs);
 	}
-	strs = ft_split("      split       this for   me  !       ", ' ');
-        while (strs[c] != NULL)
-        {
-                printf("Spit str -> %s\n", strs[c]);
-                c++;
-        }
-
-        return (0);
 }
-*/

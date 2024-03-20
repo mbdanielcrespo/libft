@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 14:34:06 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/20 12:41:46 by danalmei         ###   ########.fr       */
+/*   Created: 2024/03/19 16:27:31 by danalmei          #+#    #+#             */
+/*   Updated: 2024/03/19 16:29:11 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_error(char *msg)
+int	ft_isspace(int ch)
 {
-	ft_printf("Error: %s\n", msg);
-	exit(1);
-}
-
-void	ft_error_destroy(char *msg, void (*func)(void), void *ptr)
-{
-	if (ptr)
-		free(ptr);
-	if (func)
-		func();
-	ft_printf("Error: %s\n", msg);
-	exit(1);
+	if ((ch >= 9 && ch <= 13) || ch == 32)
+		return (1);
+	return (0);
 }
