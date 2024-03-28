@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:38 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 16:03:43 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/03/28 10:55:38 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,99 +15,79 @@
 # define BUFFER_SIZE 1024
 #endif
 
-char	*ft_read_st_save(int fd, char *st_save)
+int	gnl_ft_strlen(char *str)
 {
-	char	*buff;
-	int		read_bytes;
-
-	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr_gnl(st_save, '\n') && read_bytes != 0)
-	{
-		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes == -1)
-		{
-			free(buff);
-			free(st_save);
-			return (NULL);
-		}
-		buff[read_bytes] = '\0';
-		st_save = ft_strjoin_gnl(st_save, buff);
-	}
-	free(buff);
-	return (st_save);
-}
-
-char	*ft_get_line(char *st_save)
-{
-	int		c;
-	char	*str;
+	int	c;
 
 	c = 0;
-	while (st_save[c] != '\0' && st_save[c] != '\n')
-		c++;
-	str = (char *)malloc(sizeof(char) * (c + 2));
 	if (!str)
-		return (NULL);
-	c = 0;
-	while (st_save[c] != '\0' && st_save[c] != '\n')
-	{
-		str[c] = st_save[c];
+		return (0);
+	while (str[c])
 		c++;
-	}
-	if (st_save[c] == '\n')
-	{
-		str[c] = st_save[c];
-		c++;
-	}
-	str[c] = '\0';
-	return (str);
+	return (c);	
 }
 
-char	*ft_st_save(char *st_save)
+char	*gnl_ft_strjoin(char *s1, char *s2)
 {
-	int		c;
-	int		w;
-	char	*s;
+	char	*new_str;
+	int	len1 = gnl_ft_strlen(s1);
+	int	len2 = gnl_ft_strlen(s2);
+	int	i = 0;
+	int	j = 0;
 
-	c = 0;
-	while (st_save[c] && st_save[c] != '\n')
-		c++;
-	if (!st_save[c])
+	new_str = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!new_str)
+		return (NULL);
+	while (s1 && s1[i])
 	{
-		free(st_save);
-		return (NULL);
+		new_str[i] = s1[i];
+		i++;
 	}
-	s = (char *)malloc(sizeof(char) * ft_strlen_gnl(st_save) - c + 1);
-	if (!s)
-		return (NULL);
-	c++;
-	w = 0;
-	while (st_save[c])
-		s[w++] = st_save[c++];
-	s[w] = '\0';
-	free(st_save);
-	return (s);
+	while (s2[j])
+	{
+		new_str[i] = s2[j];
+		if (s2[j] == '\n')
+		{
+			i++;
+			break;
+		}
+		i++;
+		j++;
+	}	
+	new_str[i] = '\0';
+	free(s1);
+	return (new_str);
+}
+
+int	gnl_separate_buffer(char *buff)
+{
+	int	nl = 0, i = 0, j = 0;
+	while (buff[i])
+	{
+		if (nl)
+			buff[j++] = buff[i];
+		if (buff[i] == '\n')
+			nl = 1;
+		buff[i] = '\0';
+		i++;
+	}
+	return (nl);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*st_save;
-
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*line = NULL;
+	
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	st_save = ft_read_st_save(fd, st_save);
-	if (!st_save)
 		return (NULL);
-	line = ft_get_line(st_save);
-	st_save = ft_st_save(st_save);
-	if (!line || !*line)
+	while (1)
 	{
-		free(line);
-		return (NULL);
+		if (!*buffer && !read(fd, buffer, BUFFER_SIZE))
+			break;
+		line = gnl_ft_strjoin(line, buffer);
+		if (gnl_separate_buffer(buffer))
+			break;
 	}
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:34:06 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/20 12:41:46 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:17:24 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,26 @@ void	ft_error(char *msg)
 	exit(1);
 }
 
-void	ft_error_destroy(char *msg, void (*func)(void), void *ptr)
+void	ft_error_destroy(char *msg, void (*func)(void))
 {
-	if (ptr)
-		free(ptr);
 	if (func)
 		func();
-	ft_printf("Error: %s\n", msg);
+	if (msg)
+		ft_printf("Error: %s\n", msg);
 	exit(1);
+}
+void	*ft_safe_malloc(size_t size, void (*func)(void), void **ptr)
+{
+	void	*ret;
+	int		c;
+	
+	c = 0;
+	ret = malloc(size);
+	if (!ret)
+	{
+		while (ptr[c])
+			free(ptr[c++]);
+		ft_error_destroy("Malloc Failed!", func);
+	}
+	return (ret);
 }

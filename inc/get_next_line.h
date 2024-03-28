@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:45 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 12:00:42 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/03/28 10:54:44 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 # include <fcntl.h>
 # include <libft.h>
 
-char	*ft_strjoin_gnl(char *s1, char *s2);
-size_t	ft_strlen_gnl(char *str);
-char	*ft_strchr_gnl(char	*str, int ch);
+int		gnl_ft_strlen(char *str);
+char	*gnl_ft_strjoin(char *s1, char *s2);
+int		gnl_separate_buffer(char *buff);
 char	*get_next_line(int fd);
-char	*ft_st_save(char *st_save);
-char	*ft_read_st_save(int fd, char *save);
 
 #endif

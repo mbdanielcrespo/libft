@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:53:02 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/20 18:47:55 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:09:42 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <ft_printf.h>
+# include <stdarg.h>
 # include <get_next_line.h>
 
 typedef long long	t_llong;
 typedef long double	t_dlong;
+typedef void (*func_ptr)(void);
 typedef struct s_list
 {
 	void			*content;
@@ -81,6 +83,7 @@ int		ft_putstr_fdp(char *s, int fd);
 int		ft_pow(int num, int pow);
 void	ft_swap(int *x, int *y);
 void	ft_error(char *msg);
-void	ft_error_destroy(char *msg, void (*func)(void), void *ptr);
+void	ft_error_destroy(char *msg, void (*func)(void));
+void	*ft_safe_malloc(size_t size, void (*func)(void), void **ptr);
 
 #endif
