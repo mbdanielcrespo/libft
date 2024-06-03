@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:53:02 by danalmei          #+#    #+#             */
-/*   Updated: 2024/03/21 18:09:42 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/04/28 21:10:27 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef long long	t_llong;
 typedef long double	t_dlong;
-typedef void (*func_ptr)(void);
+typedef void		(*t_func_ptr)(void);
 typedef struct s_list
 {
 	void			*content;
